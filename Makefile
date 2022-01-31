@@ -1,7 +1,7 @@
 VERSION := $(shell echo $(shell git describe --tags) | sed 's/^v//')
 COMMIT  := $(shell git log -1 --format='%H')
 SDKCOMMIT := $(shell go list -m -u -f '{{.Version}}' github.com/cosmos/cosmos-sdk)
-GAIA_VERSION := v5.0.4
+GAIA_VERSION := v6.0.0
 AKASH_VERSION := v0.12.1
 WASMD_VERSION := v0.16.0
 SOMM_VERSION  := v1.0.0
@@ -87,18 +87,18 @@ lint:
 
 get-somm:
 	@mkdir -p ./chain-code/
-	@git clone --branch jack/test-ibc-forward git@github.com:PeggyJV/sommelier.git ./chain-code/sommelier
+	@git clone --branch jack/test-ibc-forward https://github.com/PeggyJV/sommelier ./chain-code/sommelier
 
 build-somm:
 	@./scripts/build-somm
 
 get-gaia-demo:
 	@mkdir -p ./chain-code/
-	@git clone --branch jack/vega-rc2 git@github.com:cosmos/gaia.git ./chain-code/gaia
+	@git clone --branch jack/vega-rc2 https://github.com/cosmos/gaia ./chain-code/gaia
 
 get-gaia:
 	@mkdir -p ./chain-code/
-	@git clone --branch $(GAIA_VERSION) git@github.com:cosmos/gaia.git ./chain-code/gaia
+	@git clone --branch $(GAIA_VERSION) https://github.com/cosmos/gaia.git ./chain-code/gaia
 
 build-gaia:
 	@./scripts/build-gaia
